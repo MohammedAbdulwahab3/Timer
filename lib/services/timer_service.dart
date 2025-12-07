@@ -105,19 +105,26 @@ class TimerService {
         channelId: 'routine_stopwatch_channel',
         channelName: 'Routine Stopwatch',
         channelDescription: 'Timer running in background',
-        channelImportance: NotificationChannelImportance.LOW,
-        priority: NotificationPriority.LOW,
+        // Use HIGH importance so notification stays visible
+        channelImportance: NotificationChannelImportance.HIGH,
+        priority: NotificationPriority.HIGH,
         visibility: NotificationVisibility.VISIBILITY_PUBLIC,
+        enableVibration: false,
+        playSound: false,
       ),
       iosNotificationOptions: const IOSNotificationOptions(),
       foregroundTaskOptions: ForegroundTaskOptions(
         eventAction: ForegroundTaskEventAction.repeat(1000), // Every 1 second
-        autoRunOnBoot: false,
-        autoRunOnMyPackageReplaced: false,
+        // Enable auto-restart on boot
+        autoRunOnBoot: true,
+        autoRunOnMyPackageReplaced: true,
         allowWakeLock: true,
         allowWifiLock: false,
       ),
     );
+    
+    // Request to ignore battery optimizations for better background execution
+    await FlutterForegroundTask.requestIgnoreBatteryOptimization();
   }
   
   /// Start the foreground service
