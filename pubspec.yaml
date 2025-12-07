@@ -1,0 +1,46 @@
+name: routine_stopwatch
+description: "Customizable Routine Stopwatch - Manages timing routines for workouts or tasks"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State management
+  provider: ^6.1.2
+  
+  # Local storage for profile persistence
+  shared_preferences: ^2.3.5
+  
+  # Audio playback for alarms
+  audioplayers: ^6.1.0
+  
+  # Background/foreground service for timer
+  flutter_foreground_task: ^8.12.0
+  
+  # Wakelock to keep screen on during timer
+  wakelock_plus: ^1.2.10
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon.png"
+  adaptive_icon_background: "#3F51B5"
+  adaptive_icon_foreground: "assets/icon.png"
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/sounds/
+    - assets/
